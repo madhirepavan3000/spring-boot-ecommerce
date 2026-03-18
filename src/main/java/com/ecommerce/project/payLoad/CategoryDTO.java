@@ -1,25 +1,19 @@
-package com.ecommerce.project.model;
+package com.ecommerce.project.payLoad;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-@Entity(name="Categories")
-public class Category {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CategoryDTO {
     private Long categoryId;
-    @NotBlank
-    @Size(min=5,message = "Category name must contain atleast 5 character")
+
+    @NotBlank(message = "Category name must not be blank")
+    @Size(min = 5, message = "Category name must contain atleast 5 character")
     private String categoryName;
 
-    public Category() {
+    public CategoryDTO() {
     }
 
-    public Category(Long categoryId, String categoryName) {
+    public CategoryDTO(Long categoryId, String categoryName) {
         this.categoryId = categoryId;
         this.categoryName = categoryName;
     }
@@ -39,5 +33,4 @@ public class Category {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
-
 }
